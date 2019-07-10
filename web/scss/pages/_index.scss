@@ -1,0 +1,26 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+@import "colors";
+
+.index__header {
+	text-align: center;
+	color: $white;
+	text-shadow: .4em .4em .4em $shadow;
+}
+.index__link {
+	display: block;
+	background-color: $grey;
+	padding: 1em;
+	border-radius: .2em;
+	text-decoration: none;
+	color: $black;
+	max-width: 50em;
+	width: 80%;
+	margin: 0 auto;
+	box-shadow: .4em .4em .4em .4em $shadow;
+	&:first-child {
+		margin-top: 2em;
+	}
+}

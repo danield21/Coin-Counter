@@ -1,0 +1,37 @@
+import {NotFoundError} from './api/errors'
+import chooseLocale from './page/chooseLocale'
+import errorPage from './page/error'
+
+function loadPage(resource) {
+	return async function (param, query) {
+		document.body.classList.add('loading')
+		
+		const handler = await resource()
+		let page
+		try {
+			page = await handler.default(param, query)
+		} catch (e) {
+			console.error(e)
+			if(e instanceof NotFoundError) {
+				localStorage.removeItem('lang')
+				page = await chooseLocale()
+			} else {
+				page = await errorPage()
+			}
+		}
+
+		for(let current = document.body.firstChild; current != null; current = document.body.firstChild) {
+			document.body.removeChild(current)
+		}
+
+		document.body.append(page.element)
+		if(typeof page.attached === 'function') {
+			page.attached()
+		}
+		document.body.classList.remove('loading')
+	}
+}
+
+export const chooseLocaleHandler = loadPage(() => import('./page/chooseLocale'))
+export const chooseRegionHandler = loadPage(() => import('./page/chooseRegion'))
+export const exerciseHandler = loadPage(() => import('./page/exercise'))

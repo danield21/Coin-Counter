@@ -1,0 +1,39 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+@import "../colors";
+
+.scoreboard {
+	max-width: 500px;
+	margin: 0 auto;
+
+	.scoreboard__text {
+		display: block;
+		padding: .2em;
+		color: #FFF;
+		text-shadow: .4em .4em .4em $shadow;
+		text-align: center;
+	}
+
+	.scoreboard__score {
+		font-size: 1.5em;
+	}
+
+	.scoreboard__row {
+		margin: 2em 1em 1em 1em;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.scoreboard__button {
+		width: 80%;
+		padding: .5em;
+		border-radius: .3em;
+		display: block;
+		margin: 3em auto;
+		border: 0;
+		background-color: $grey;
+		text-shadow: .4em .4em .4em $shadow;
+	}
+}

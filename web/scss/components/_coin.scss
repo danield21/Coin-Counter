@@ -1,0 +1,56 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+@import "../colors";
+
+.coin {
+	position: relative;
+	transition: transform .5s;
+	transform-style: preserve-3d;
+	perspective: 100em;
+
+	.coin__front, .coin__back {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		backface-visibility: hidden;
+	}
+
+	.coin__back:last-child {
+		transform: rotateY( 180deg );
+	}
+
+	&.coin--face-down {
+		transform: rotateY( 180deg );
+	}
+
+	.coin__img {
+		height: 100%;
+		width: 100%;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		transform: translate(.4em, .4em);
+		background-color: $shadow;
+		border-radius: 50%;
+		filter: blur(.1em);
+		transition: transform 1s;
+	}
+
+	&.coin--face-down::before {
+		transform: translate(-.4em, .4em);
+	}
+}
+
+.draggable--lifted .coin {
+	transform: scale(1.1)
+}
+
+.draggable--lifted .coin--face-down {
+	transform: scale(1.1) rotateY(180deg);
+}

@@ -1,0 +1,30 @@
+{
+  "name": "coin-counter",
+  "version": "1.0.0",
+  "description": "An application that allows the user to practice counting coins",
+  "main": "index.js",
+  "scripts": {
+    "serve": "firebase serve",
+    "deploy": "firebase deploy",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "coin",
+    "counter",
+    "application"
+  ],
+  "author": "Daniel J Dominguez",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-yaml": "^2.0.4",
+    "node-sass": "^4.12.0",
+    "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "navigo": "^7.1.2"
+  }
+}
