@@ -11,6 +11,13 @@
 		<script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
 		<script defer src="/js/script.js"></script>
+		<script>
+			if('serviceWorker' in navigator) {
+				navigator.serviceWorker
+					.register('/service-worker.js')
+					.catch(function (e) {console.error(e)});
+			}
+		</script>
 	</head>
 	<body></body>
 </html>

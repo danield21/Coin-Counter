@@ -22,7 +22,12 @@ function copyHTML() {
 		.pipe(dest(destDirectory))
 }
 
-const copy = parallel(copyImages, copyHTML)
+function copyServiceWorker() {
+	return src(srcDirectory + '/service-worker.js')
+		.pipe(dest(destDirectory))
+}
+
+const copy = parallel(copyImages, copyHTML, copyServiceWorker)
 
 function compileJS() {
 	return src(srcDirectory + '/js/main.js')
