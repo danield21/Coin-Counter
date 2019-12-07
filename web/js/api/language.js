@@ -9,7 +9,7 @@ import {fetch} from './fetch'
 /**
  * @typedef {{
  * 	title: string
- * 	url: string
+ * 	text: Map<string, string>
  * 	currencies: {
  * 		code: string
  * 		title: string

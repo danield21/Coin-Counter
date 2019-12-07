@@ -11,7 +11,7 @@ import {DraggableComponent} from './draggable'
 export class DishComponent {
 	/**
 	 * Creates a dish based on the coins that are passed
-	 * @param {{name: string, value: number, size: number, images: {front: string, back: string}}[]}coins 
+	 * @param {{name: string, value: number, size: number, locale: string, images: {front: string, back: string}}[]}coins 
 	 * @param {number} value 
 	 */
 	constructor(coins) {
@@ -59,7 +59,7 @@ export class DishComponent {
 
 			const draggable = new DraggableComponent(coin.element, position)
 			draggable.element.classList.add('coin-wrapper')
-			draggable.onDrag(type => {
+			draggable.addEventListener('drag', e => {
 				coin.skipFlip = true
 
 				let sibling = draggable.element.nextElementSibling
@@ -68,7 +68,7 @@ export class DishComponent {
 					sibling = sibling.nextElementSibling
 				}
 			})
-			draggable.onClick(e => {
+			draggable.addEventListener('click', e => {
 				coin.flip()
 			})
 			frag.append(draggable.element)

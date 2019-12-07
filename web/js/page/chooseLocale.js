@@ -4,12 +4,12 @@
 
 import {fetchIndex} from '../api/index'
 
-export default async function chooseLocale() {
+export default async function chooseLocale(url, params, query) {
 	const locale = localStorage.getItem('lang')
 	if(locale) {
 		try {
 			const handler = await import('./chooseRegion')
-			return await handler.default({locale})
+			return await handler.default(url, [locale])
 		} catch(e) {
 			localStorage.removeItem('lang')
 			throw e

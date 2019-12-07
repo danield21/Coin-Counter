@@ -7,7 +7,7 @@ import { CoinComponent } from "./coin"
 export class ScoreboardComponent {
 	/**
 	 * 
-	 * @param {Map<string, string>} messages 
+	 * @param {object} messages 
 	 */
 	constructor(messages) {
 		this.element = document.createElement('div')
@@ -45,9 +45,9 @@ export class ScoreboardComponent {
 			totalDiff += diff
 
 			history.append(row,
-				createTextElement(this.messages.get('your-answer') + ': ' + formatValue(value)),
-				createTextElement(this.messages.get('correct-answer') + ': ' + formatValue(total)),
-				createTextElement(this.messages.get('difference') + ': ' + formatValue(diff))
+				createTextElement(this.messages['your-answer'] + ': ' + formatValue(value)),
+				createTextElement(this.messages['correct-answer'] + ': ' + formatValue(total)),
+				createTextElement(this.messages['difference'] + ': ' + formatValue(diff))
 			)
 		}
 
@@ -55,13 +55,13 @@ export class ScoreboardComponent {
 		const final = document.createElement('div')
 		final.setAttribute('class', 'scoreboard__score')
 		final.append(
-			createTextElement(this.messages.get('final-difference') + ': ' + formatValue(totalDiff)),
-			createTextElement(this.messages.get('final-time') + ': ' + formatTime(time))
+			createTextElement(this.messages['final-difference'] + ': ' + formatValue(totalDiff)),
+			createTextElement(this.messages['final-time'] + ': ' + formatTime(time))
 		)
 
 		const refreshButton = document.createElement('button')
 		refreshButton.setAttribute('class', 'scoreboard__button')
-		refreshButton.append(document.createTextNode(this.messages.get('try-again')))
+		refreshButton.append(document.createTextNode(this.messages['try-again']))
 		refreshButton.addEventListener('click', e => {
 			e.preventDefault()
 			window.location.reload()

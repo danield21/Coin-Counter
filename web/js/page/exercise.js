@@ -7,18 +7,16 @@ import {DishComponent} from '../component/dish'
 import {dispense} from '../dispense'
 import {fetchCurrency} from '../api/currency'
 import {fetchLanguage} from '../api/language'
-import {fetchCoreLanguage} from '../api/messages'
 
 const TOTAL_ROUNDS = 10
 
-export default async function exercise({locale, region}) {
+export default async function exercise(url, [locale, region]) {
 	localStorage.setItem('lang', locale)
 
 	const language = await fetchLanguage(locale)
 	const set = await fetchCurrency(region)
-	const core = await fetchCoreLanguage(locale)
 
-	const scoreboard = new ScoreboardComponent(core)
+	const scoreboard = new ScoreboardComponent(language.messages)
 	const value = generateValue(set)
 	let coins = dispense(set.currency, value)
 	let dish = new DishComponent(coins)
@@ -48,7 +46,8 @@ export default async function exercise({locale, region}) {
 
 	const button = document.createElement('button')
 	button.setAttribute('class', 'exercise__button')
-	button.append(document.createTextNode(core.get('submit')))
+	console.log(language)
+	button.append(document.createTextNode(language.messages['submit']))
 
 	bottomBar.append(input, button)
 

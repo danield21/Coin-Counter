@@ -4,7 +4,7 @@
 
  /**
   * Calculates the necessary coins to be given based on the set of coins
-  * @param {{name: string, value: number, size: number, images: {front: string, back: string}}[]} coins 
+  * @param {{name: string, value: number, size: number, locale: string, images: {front: string, back: string}}[]} coins 
   * @param {number} value 
   */
 export function dispense(coins, value) {

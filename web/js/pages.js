@@ -7,20 +7,20 @@ import chooseLocale from './page/chooseLocale'
 import errorPage from './page/error'
 
 function loadPage(resource) {
-	return async function (param, query) {
+	return async function (url, params, query) {
 		document.body.classList.add('loading')
 		
 		const handler = await resource()
 		let page
 		try {
-			page = await handler.default(param, query)
+			page = await handler.default(url, params, query)
 		} catch (e) {
 			console.error(e)
 			if(e instanceof NotFoundError) {
 				localStorage.removeItem('lang')
-				page = await chooseLocale()
+				page = await chooseLocale(url, [], query)
 			} else {
-				page = await errorPage()
+				page = await errorPage(url, [], query)
 			}
 		}
 

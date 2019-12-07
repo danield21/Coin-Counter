@@ -9,7 +9,7 @@
 export class CoinComponent {
 	/**
 	 * Creates a Coin Component
-	 * @param {{name: string, value: number, size: number, images: {front: string, back: string}}} coin contains the information required to render a coin
+	 * @param {{name: string, value: number, size: number, locale: string, images: {front: string, back: string}}} coin contains the information required to render a coin
 	 */
 	constructor(coin) {
 		/**
@@ -54,13 +54,13 @@ export class CoinComponent {
 
 /**
  * 
- * @param {{name: string, value: number, size: number, images: {front: string, back: string}}} coin 
+ * @param {{name: string, value: number, size: number, locale: string, images: {front: string, back: string}}} coin 
  * @param {string} side Should be a property that coin.images has, such as `front` or `back`
  * @returns {HTMLDivElement}
  */
 function createCoinSide(coin, side) {
 	if(!(side in coin.images)) {
-		throw new TypeError('Excepted only the strings "front" or "back')
+		throw new TypeError('Expected only the strings "front" or "back')
 	}
 
 	const wrapper = document.createElement('div')
@@ -69,6 +69,7 @@ function createCoinSide(coin, side) {
 	const img = document.createElement('img')
 	img.setAttribute('src', coin.images[side])
 	img.setAttribute('alt', coin.name)
+	img.setAttribute('lang', coin.locale)
 	img.setAttribute('class', 'coin__img')
 	wrapper.append(img)
 

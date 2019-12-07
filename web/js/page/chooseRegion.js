@@ -4,7 +4,7 @@
 
 import {fetchLanguage} from '../api/language'
 
-export default async function chooseLanguage({locale}) {
+export default async function chooseLanguage(url, [locale]) {
 	localStorage.setItem('lang', locale)
 	const language = await fetchLanguage(locale)
 

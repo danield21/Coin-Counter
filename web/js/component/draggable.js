@@ -41,12 +41,19 @@ export class DraggableComponent {
 		this.element.addEventListener('pointerdown', createPointerDown(this.element, points, actions))
 	}
 
-	onDrag(callback) {
-		this.movement.onLimit(callback)
-	}
-
-	onClick(callback) {
-		this.element.addEventListener('click', callback)
+	/**
+	 * Appends an event listener to the component that is passed along to the elements beneath it.
+	 * Added an extra 'drag' event to control when the user drags an element along.
+	 * @param {string} event to listen for
+	 * @param {function} callback is the action that will be taken when the event occurs
+	 */
+	addEventListener(event, callback) {
+		switch (event) {
+			case 'drag':
+				this.movement.onLimit(callback)
+			default:
+				this.element.addEventListener(event, callback)
+		}
 	}
 }
 

@@ -24,7 +24,5 @@
     "node-sass": "^4.12.0",
     "webpack-stream": "^5.2.1"
   },
-  "dependencies": {
-    "navigo": "^7.1.2"
-  }
+  "dependencies": {}
 }

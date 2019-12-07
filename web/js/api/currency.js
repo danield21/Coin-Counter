@@ -13,6 +13,7 @@ import {fetch} from './fetch'
  * 		name: string
  * 		value: number
  * 		size: number
+ * 		locale: string
  * 		images: {
  * 			front: string
  * 			back: string
